@@ -134,6 +134,10 @@ spatial_flowering_sampler = function(n,
     set.seed(seed)
   }
   
+  if(start_doy + flowering_length>365){
+    stop('start_doy plus flowering_length cannot exceed 365')
+  }
+  
   if(clustering) {
     clustered_points = generate_clustered_points(n=n,
                                                  xlimits=xlimits,ylimits=ylimits,

@@ -62,3 +62,9 @@ test_that('primary simulation function has correct output',{
   #expect_true(all(simulated_data_pa$doy >= 1))
   #expect_true(all(simulated_data_pa$doy <= 365))
 })
+
+test_that('spatial_flowering_sampler does not accept seasons exceeding 1 year',{
+  # And expect a specific error message
+  expect_error(spatial_flowering_sampler(n=10, start_doy = 180, flowering_length = 300),
+               regexp=('start_doy plus flowering_length cannot exceed 365'))
+  })
